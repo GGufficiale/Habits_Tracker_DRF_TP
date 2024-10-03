@@ -123,6 +123,7 @@ DATABASES = {
         'NAME': os.getenv('POSTGRES_DB'),
         'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('POSTGRES_HOST'),
         'PORT': os.getenv('POSTGRES_PORT'),
     }
 }
@@ -176,7 +177,10 @@ AUTH_USER_MODEL = 'users.User'
 TELEGRAM_URL = os.getenv('TELEGRAM_URL')
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 
+# Настройки для Celery
+# URL-адрес брокера сообщений
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+# URL-адрес брокера результатов, также Redis
 CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
 
 CELERY_TIMEZONE = TIME_ZONE
