@@ -12,7 +12,7 @@ class HabitsTestCase(APITestCase):
     def setUp(self):
         self.user = User.objects.create(email="django@mail.ru")
         self.habit = Habits.objects.create(
-            owner=self.user, place="Home", time="12:00:00", action="Зарядка"
+            owner=self.user, place="Home", time="12:00:00", action="Зарядка", duration='40'
         )
         self.client.force_authenticate(user=self.user)
 

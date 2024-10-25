@@ -10,7 +10,7 @@ from users.permissions import IsOwner
 class HabitsCreateAPIView(generics.CreateAPIView):
     serializer_class = HabitSerializer
     queryset = Habits.objects.all()
-    permission_classes = (IsAuthenticated, IsOwner)
+    permission_classes = (IsAuthenticated,)
 
     def perform_create(self, serializer):
         habit = serializer.save()
