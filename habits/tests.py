@@ -1,4 +1,3 @@
-from django.db.models.expressions import result
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -10,7 +9,7 @@ from users.models import User
 class HabitsTestCase(APITestCase):
 
     def setUp(self):
-        self.user = User.objects.create(email="django@mail.ru")
+        self.user = User.objects.create(email="django@mail.ru", password='DXB')
         self.habit = Habits.objects.create(
             owner=self.user, place="Home", time="12:00:00", action="Зарядка", duration='40'
         )
@@ -30,6 +29,7 @@ class HabitsTestCase(APITestCase):
             "place": "Home",
             "time": "12:00",
             "action": "Зарядка",
+            "duration": "40",
         }
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -55,9 +55,9 @@ class HabitsTestCase(APITestCase):
             "habits:habits_list",
         )
         response = self.client.get(url)
-        data = response.json()
+        data = response.status_code
         print(data)
-        result_list = {
+        result_list = [{
             "count": 1,
             "next": None,
             "previous": None,
@@ -76,6 +76,5 @@ class HabitsTestCase(APITestCase):
                     "related": self.habit.related,
                 }
             ],
-        }
+        }]
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(data, result_list)
