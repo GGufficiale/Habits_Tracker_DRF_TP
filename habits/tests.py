@@ -57,24 +57,24 @@ class HabitsTestCase(APITestCase):
         response = self.client.get(url)
         data = response.status_code
         print(data)
-        result_list = [{
-            "count": 1,
-            "next": None,
-            "previous": None,
-            "results": [
-                {
-                    "id": self.habit.pk,
-                    "place": self.habit.place,
-                    "time": self.habit.time,
-                    "action": self.habit.action,
-                    "is_good": self.habit.is_good,
-                    "duration": self.habit.duration,
-                    "prize": self.habit.prize,
-                    "is_daily": self.habit.is_daily,
-                    "is_public": self.habit.is_public,
-                    "owner": self.user.pk,
-                    "related": self.habit.related,
-                }
-            ],
-        }]
+        # result_list = [{
+        #     "count": 1,
+        #     "next": None,
+        #     "previous": None,
+        #     "results": [
+        #         {
+        #             "id": self.habit.pk,
+        #             "place": self.habit.place,
+        #             "time": self.habit.time,
+        #             "action": self.habit.action,
+        #             "is_good": self.habit.is_good,
+        #             "duration": self.habit.duration,
+        #             "prize": self.habit.prize,
+        #             "is_daily": self.habit.is_daily,
+        #             "is_public": self.habit.is_public,
+        #             "owner": self.user.pk,
+        #             "related": self.habit.related,
+        #         }
+        #     ],
+        # }]
         self.assertEqual(response.status_code, status.HTTP_200_OK)
